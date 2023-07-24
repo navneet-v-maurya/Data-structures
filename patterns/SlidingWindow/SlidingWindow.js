@@ -43,7 +43,7 @@ const refractored = (arr, val) => {
   return sum;
 };
 
-console.log("refractored");
+console.log("refractored version");
 console.log(refractored([1, 2, 5, 2, 8, 1, 5], 2)); // 10
 console.log(refractored([1, 2, 5, 2, 8, 1, 5], 4)); // 17
 console.log(refractored([4, 2, 1, 6], 1)); // 6
