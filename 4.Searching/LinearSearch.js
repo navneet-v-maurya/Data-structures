@@ -2,9 +2,9 @@ const arr = [1, 2, 5, 96, 55, 6, 4, 50, 8, 20, 80];
 
 const LinearSearch = (num) => {
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === num) return true;
+    if (arr[i] === num) return i;
   }
-  return false;
+  return -1;
 };
 
 console.log(LinearSearch(40));
