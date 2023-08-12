@@ -1,18 +1,15 @@
 const InsertionSort = (arr) => {
-  for (let i = 0; i < arr.length - 1; i++) {
-    let curr = i + 1;
-    let index = curr;
-    for (let j = i; j >= 0; j--) {
-      if (arr[curr] < arr[j]) {
-        index = j;
-      }
+  for (let i = 1; i < arr.length; i++) {
+    let curr = arr[i];
+    let j = i - 1;
+
+    while (j >= 0 && arr[j] > curr) {
+      arr[j + 1] = arr[j];
+      j--;
     }
-    if (index !== curr) {
-      let temp = arr[curr];
-      arr[curr] = arr[index];
-      arr[index] = temp;
-    }
+    arr[j + 1] = curr;
   }
+
   return arr;
 };
 
