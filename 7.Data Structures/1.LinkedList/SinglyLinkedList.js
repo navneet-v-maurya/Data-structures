@@ -50,13 +50,30 @@ class SinglyLinkedList {
     return curr.val;
   }
 
+  //method to remove element from head
+  shift() {
+    if (this.length === 0) return undefined;
+    let currHead = this.head;
+    if (this.length === 1) {
+      this.tail = null;
+    }
+    this.head = currHead.next;
+    this.length--;
+    return currHead.val;
+  }
+
   // method to log each node of list
   traverse() {
+    let myList = "";
     let curr = this.head;
     while (curr) {
-      console.log(curr);
+      myList += `${curr.val}->`;
+      if (curr.val === this.tail.val) {
+        myList += "null";
+      }
       curr = curr.next;
     }
+    return myList;
   }
 }
 
@@ -72,6 +89,13 @@ console.log("pop", list.pop());
 console.log("pop", list.pop());
 console.log("pop", list.pop());
 console.log("pop", list.pop());
+console.log("pop", list.pop());
+
 list.push(1);
 list.push(2);
+list.push(3);
+list.push(4);
+
+console.log("shift", list.shift());
+console.log("shift", list.shift());
 console.log(list.traverse());
