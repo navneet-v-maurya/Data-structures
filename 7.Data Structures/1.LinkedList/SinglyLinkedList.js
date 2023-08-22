@@ -62,9 +62,39 @@ class SinglyLinkedList {
     return currHead.val;
   }
 
+  //method to add element to head
+  unshift(val) {
+    const newNode = new Node(val);
+    if (this.length === 0) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      let currHead = this.head;
+      newNode.next = currHead;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
+
+  //method to get element with index
+  get(index) {
+    if (index >= this.length || index < 0) return null;
+    let counter = 0;
+    let curr = this.head;
+    while (counter < this.length) {
+      if (counter === index) {
+        return curr.val;
+      }
+      counter++;
+      curr = curr.next;
+    }
+  }
+
   // method to log each node of list
   traverse() {
     let myList = "";
+    if (this.length === 0) return "null";
     let curr = this.head;
     while (curr) {
       myList += `${curr.val}->`;
@@ -99,3 +129,7 @@ list.push(4);
 console.log("shift", list.shift());
 console.log("shift", list.shift());
 console.log(list.traverse());
+list.unshift(2);
+list.unshift(1);
+console.log(list.traverse());
+console.log(list.get(3));
