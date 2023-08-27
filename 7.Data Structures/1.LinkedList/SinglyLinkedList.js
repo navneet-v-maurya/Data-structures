@@ -84,11 +84,21 @@ class SinglyLinkedList {
     let curr = this.head;
     while (counter < this.length) {
       if (counter === index) {
-        return curr.val;
+        return curr;
       }
       counter++;
       curr = curr.next;
     }
+  }
+
+  //method to update element at a particular index
+  set(index, val) {
+    const found = this.get(index);
+    if (found) {
+      found.val = val;
+      return true;
+    }
+    return false;
   }
 
   // method to log each node of list
@@ -132,4 +142,7 @@ console.log(list.traverse());
 list.unshift(2);
 list.unshift(1);
 console.log(list.traverse());
-console.log(list.get(3));
+console.log(list.set(2, 5));
+console.log(list.traverse());
+console.log(list.set(6, 10));
+console.log(list.traverse());
