@@ -101,6 +101,38 @@ class SinglyLinkedList {
     return false;
   }
 
+  //insert a val at a given index
+  insert(index, val) {
+    if (index < 0 || index > this.length) {
+      return false;
+    }
+
+    const found = this.get(index);
+    const newNode = new Node(val);
+    if (index === 0) {
+      this.head = newNode;
+      newNode.next = found;
+      this.length++;
+      return true;
+    }
+
+    const prevNode = this.get(index - 1);
+    if (index === this.length) {
+      prevNode.next = newNode;
+      this.tail = newNode;
+      this.length++;
+      return true;
+    }
+
+    if (found) {
+      newNode.next = found;
+      prevNode.next = newNode;
+      this.length++;
+      return true;
+    }
+    return false;
+  }
+
   // method to log each node of list
   traverse() {
     let myList = "";
@@ -145,4 +177,7 @@ console.log(list.traverse());
 console.log(list.set(2, 5));
 console.log(list.traverse());
 console.log(list.set(6, 10));
+console.log(list.traverse());
+console.log(list.get(10));
+console.log(list.insert(3, 6));
 console.log(list.traverse());
