@@ -133,6 +133,19 @@ class SinglyLinkedList {
     return false;
   }
 
+  //remove a val at a given index
+  remove(index) {
+    if (index < 0 || index >= this.length) return null;
+    if (index === 0) return this.shift();
+    if (index === this.length - 1) return this.pop();
+
+    const prev = this.get(index - 1);
+    const removed = prev.next;
+    prev.next = removed.next;
+    this.length--;
+    return removed;
+  }
+
   // method to log each node of list
   traverse() {
     let myList = "";
@@ -181,3 +194,7 @@ console.log(list.traverse());
 console.log(list.get(10));
 console.log(list.insert(3, 6));
 console.log(list.traverse());
+
+console.log(list.remove(1));
+console.log(list.traverse());
+console.log(list.head, list.tail, list.length);
