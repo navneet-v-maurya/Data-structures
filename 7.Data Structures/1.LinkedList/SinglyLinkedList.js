@@ -6,7 +6,7 @@ class Node {
 }
 
 class SinglyLinkedList {
-  constructor(val) {
+  constructor() {
     this.head = null;
     this.tail = null;
     this.length = 0;
@@ -168,12 +168,15 @@ class SinglyLinkedList {
     let myList = "";
     if (this.length === 0) return "null";
     let curr = this.head;
-    while (curr) {
-      myList += `${curr.val}->`;
-      if (curr.val === this.tail.val) {
+    let counter = 0;
+    while (counter <= this.length) {
+      if (counter === this.length) {
         myList += "null";
+      } else {
+        myList += `${curr.val}->`;
+        curr = curr.next;
       }
-      curr = curr.next;
+      counter++;
     }
     return myList;
   }

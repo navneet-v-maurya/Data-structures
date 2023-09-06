@@ -29,17 +29,30 @@ class DoublyLinkedList {
     return true;
   }
 
+  //remove elment from tail
+  pop() {
+    const temp = this.tail;
+    const prev = this.tail.prev;
+    prev.next = null;
+    this.tail = prev;
+    this.length--;
+    return temp;
+  }
+
   // method to log each node of list
   traverse() {
-    if (this.length === 0) return "null";
-    let myList = "null<-";
+    if (this.length === 0) return " null ";
+    let myList = " null <---> ";
     let curr = this.head;
-    while (curr) {
-      myList += `${curr.val}<=>`;
-      if (curr.val === this.tail.val) {
-        myList += "null";
+    let counter = 0;
+    while (counter <= this.length) {
+      if (counter === this.length) {
+        myList += " null ";
+      } else {
+        myList += ` (${curr.val}) <---> `;
+        curr = curr.next;
       }
-      curr = curr.next;
+      counter++;
     }
     return myList;
   }
@@ -47,7 +60,10 @@ class DoublyLinkedList {
 
 const list = new DoublyLinkedList();
 
+console.log(list.traverse());
 console.log(list.push(1));
 console.log(list.traverse());
 console.log(list.push(2));
+console.log(list.push(3));
+console.log(list.push(3));
 console.log(list.traverse());
