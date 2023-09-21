@@ -22,7 +22,7 @@ class BinarySearchTree {
     }
 
     let curr = this.root;
-    while (true) {
+    while (curr) {
       if (val > curr.val) {
         if (!curr.right) {
           curr.right = newNode;
@@ -43,13 +43,37 @@ class BinarySearchTree {
       }
     }
   }
+
+  find(val) {
+    if (this.size === 0) return false;
+
+    let curr = this.root;
+    while (curr) {
+      if (curr.val === val) return true;
+
+      if (curr.val < val) {
+        curr = curr.right;
+      } else {
+        curr = curr.left;
+      }
+    }
+    return false;
+  }
 }
 
 const bst = new BinarySearchTree();
 
+console.log(bst.find(10));
 console.log(bst.insert(5));
+console.log(bst.find(6));
 console.log(bst.insert(2));
 console.log(bst.insert(7));
 console.log(bst.insert(7));
 console.log(bst.insert(6));
 console.log(bst.insert(3));
+console.log(bst.find(5));
+console.log(bst.find(2));
+console.log(bst.find(7));
+console.log(bst.find(6));
+console.log(bst.find(3));
+console.log(bst.find(10));
