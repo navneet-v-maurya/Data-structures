@@ -40,14 +40,16 @@ class SinglyLinkedListQueue {
   }
 }
 
-const queue = new SinglyLinkedListQueue();
+module.exports = SinglyLinkedListQueue;
 
-console.log("dequeue", queue.dequeue());
-console.log(queue.enqueue(1));
-console.log("dequeue", queue.dequeue());
-console.log(queue.enqueue(2));
-console.log(queue.enqueue(3));
-console.log(queue.enqueue(4));
-console.log(queue.enqueue(5));
-console.log("dequeue", queue.dequeue());
-console.log(queue);
+// const queue = new SinglyLinkedListQueue();
+
+// console.log("dequeue", queue.dequeue());
+// console.log(queue.enqueue(1));
+// console.log("dequeue", queue.dequeue());
+// console.log(queue.enqueue(2));
+// console.log(queue.enqueue(3));
+// console.log(queue.enqueue(4));
+// console.log(queue.enqueue(5));
+// console.log("dequeue", queue.dequeue());
+// console.log(queue);

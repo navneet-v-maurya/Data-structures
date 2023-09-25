@@ -1,3 +1,5 @@
+const SinglyLinkedListQueue = require("../3.Queues/Queue.js");
+
 class Node {
   constructor(val) {
     this.val = val;
@@ -60,7 +62,7 @@ class BinarySearchTree {
     return false;
   }
 
-  BFS() {
+  BFS_Using_Array() {
     const arr = [];
     const visited = [];
     let curr;
@@ -79,11 +81,32 @@ class BinarySearchTree {
     }
     return arr;
   }
+
+  BFS_Using_Queue() {
+    const arr = [];
+    const visited = new SinglyLinkedListQueue();
+    let curr;
+    if (this.root) {
+      visited.enqueue(this.root);
+    }
+    while (visited.size > 0) {
+      curr = visited.dequeue();
+      arr.push(curr.val);
+      if (curr.left) {
+        visited.enqueue(curr.left);
+      }
+      if (curr.right) {
+        visited.enqueue(curr.right);
+      }
+    }
+    return arr;
+  }
 }
 
 const bst = new BinarySearchTree();
 
-console.log(bst.BFS());
+console.log(bst.BFS_Using_Array());
+console.log(bst.BFS_Using_Queue());
 //console.log(bst.find(10));
 console.log(bst.insert(10));
 //console.log(bst.find(6));
@@ -98,4 +121,4 @@ console.log(bst.insert(20));
 //console.log(bst.find(6));
 //console.log(bst.find(3));
 //console.log(bst.find(10));
-console.log(bst.BFS());
+console.log(bst.BFS_Using_Queue());
