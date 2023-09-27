@@ -136,6 +136,30 @@ class BinarySearchTree {
 
     return arr;
   }
+
+  DFS_postorder_recursive() {
+    const arr = [];
+    if (this.size === 0) return arr;
+    const helper = (node) => {
+      if (node.left) helper(node.left);
+      if (node.right) helper(node.right);
+      arr.push(node.val);
+    };
+    helper(this.root);
+    return arr;
+  }
+
+  DFS_inorder_recursive() {
+    const arr = [];
+    if (this.size === 0) return arr;
+    const helper = (node) => {
+      if (node.left) helper(node.left);
+      arr.push(node.val);
+      if (node.right) helper(node.right);
+    };
+    helper(this.root);
+    return arr;
+  }
 }
 
 const bst = new BinarySearchTree();
@@ -160,3 +184,5 @@ console.log(bst.insert(20));
 console.log(bst.BFS_Using_Queue());
 console.log(bst.DFS_preorder_recursive());
 console.log(bst.DFS_preorder_iterative());
+console.log(bst.DFS_postorder_recursive());
+console.log(bst.DFS_inorder_recursive());
