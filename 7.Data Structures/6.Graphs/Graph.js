@@ -54,6 +54,26 @@ class Grpah {
     delete this.list[vertex];
     return this.list;
   }
+
+  dfsRecurive(start) {
+    const arr = [];
+    const visted = {};
+    const list = this.list;
+
+    const dfs = (vertex) => {
+      if (!list[vertex]) return null;
+      visted[vertex] = true;
+      arr.push(vertex);
+      list[vertex].forEach((el) => {
+        if (!visted[el]) {
+          return dfs(el);
+        }
+      });
+    };
+
+    dfs(start);
+    return arr;
+  }
 }
 
 const grph = new Grpah();
@@ -70,7 +90,5 @@ console.log(grph.addVertex("E"));
 console.log(grph.addEdge("D", "A"));
 console.log(grph.addEdge("D", "B"));
 console.log(grph.addEdge("C", "A"));
-//console.log(grph.removeEdge("C", "A"));
-//console.log(grph.removeEdge("C", "A"));
-console.log(grph.removeVertex("A"));
-console.log(grph.removeVertex("A"));
+
+console.log(grph.dfsRecurive("B"));
