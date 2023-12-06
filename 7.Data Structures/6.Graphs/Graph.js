@@ -1,3 +1,5 @@
+const SinglyLinkedListQueue = require("../3.Queues/Queue.js");
+
 class Grpah {
   constructor() {
     this.list = {};
@@ -92,6 +94,26 @@ class Grpah {
     }
     return arr;
   }
+
+  bfs(start) {
+    if (!this.list[start]) return null;
+    const q = new SinglyLinkedListQueue();
+    q.enqueue(start);
+    const arr = [];
+    const visited = {};
+
+    while (q.size > 0) {
+      const vertex = q.dequeue();
+      if (!visited[vertex]) {
+        visited[vertex] = true;
+        arr.push(vertex);
+        this.list[vertex].forEach((el) => {
+          q.enqueue(el);
+        });
+      }
+    }
+    return arr;
+  }
 }
 
 const grph = new Grpah();
@@ -99,15 +121,18 @@ console.log(grph.removeEdge("C", "A"));
 console.log(grph.addEdge("B", "C"));
 console.log(grph.addVertex("A"));
 console.log(grph.addVertex("B"));
-console.log(grph.addVertex("A"));
-console.log(grph.addEdge("B", "C"));
-console.log(grph.addEdge("B", "A"));
 console.log(grph.addVertex("C"));
 console.log(grph.addVertex("D"));
 console.log(grph.addVertex("E"));
-console.log(grph.addEdge("D", "A"));
-console.log(grph.addEdge("D", "B"));
-console.log(grph.addEdge("C", "A"));
+console.log(grph.addVertex("F"));
+console.log(grph.addEdge("A", "B"));
+console.log(grph.addEdge("A", "C"));
+console.log(grph.addEdge("B", "D"));
+console.log(grph.addEdge("C", "E"));
+console.log(grph.addEdge("D", "E"));
+console.log(grph.addEdge("D", "F"));
+console.log(grph.addEdge("E", "F"));
 
-console.log(grph.dfsRecurive("B"), "Recursive");
-console.log(grph.dfsIterative("B"), "Iterative");
+console.log(grph.dfsRecurive("A"), "Recursive");
+console.log(grph.dfsIterative("A"), "Iterative");
+console.log(grph.bfs("A"), "BFS");
