@@ -74,6 +74,24 @@ class Grpah {
     dfs(start);
     return arr;
   }
+
+  dfsIterative(start) {
+    if (!this.list[start]) return null;
+    const stack = [start];
+    const arr = [];
+    const visited = {};
+    while (stack.length > 0) {
+      const vertex = stack.pop();
+      if (!visited[vertex]) {
+        visited[vertex] = true;
+        arr.push(vertex);
+        this.list[vertex].forEach((el) => {
+          stack.push(el);
+        });
+      }
+    }
+    return arr;
+  }
 }
 
 const grph = new Grpah();
@@ -91,4 +109,5 @@ console.log(grph.addEdge("D", "A"));
 console.log(grph.addEdge("D", "B"));
 console.log(grph.addEdge("C", "A"));
 
-console.log(grph.dfsRecurive("B"));
+console.log(grph.dfsRecurive("B"), "Recursive");
+console.log(grph.dfsIterative("B"), "Iterative");
