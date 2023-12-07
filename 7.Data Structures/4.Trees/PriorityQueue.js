@@ -75,6 +75,8 @@ class PriorityQueue {
   }
 }
 
+module.exports = PriorityQueue;
+
 const pq = new PriorityQueue();
 
 console.log(pq.dequeue());
