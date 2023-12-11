@@ -77,14 +77,14 @@ class PriorityQueue {
 
 module.exports = PriorityQueue;
 
-const pq = new PriorityQueue();
+// const pq = new PriorityQueue();
 
-console.log(pq.dequeue());
-console.log(pq.enqueue("sick", 3));
-console.log(pq.dequeue());
-console.log(pq.enqueue("just fever", 4));
-console.log(pq.enqueue("sverer injury", 2));
-console.log(pq.enqueue("heartattack", 1));
-console.log(pq.dequeue());
-console.log(pq.dequeue());
-console.log(pq.dequeue());
+// console.log(pq.dequeue());
+// console.log(pq.enqueue("sick", 3));
+// console.log(pq.dequeue());
+// console.log(pq.enqueue("just fever", 4));
+// console.log(pq.enqueue("sverer injury", 2));
+// console.log(pq.enqueue("heartattack", 1));
+// console.log(pq.dequeue());
+// console.log(pq.dequeue());
+// console.log(pq.dequeue());
